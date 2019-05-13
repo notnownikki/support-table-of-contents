@@ -1,0 +1,21 @@
+div.wp-block-a8c-support-table-of-contents {
+	background-color: #f3f6f8;
+}
+
+div.wp-block-a8c-support-table-of-contents ol, div.wp-block-a8c-support-table-of-contents li {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+div.wp-block-a8c-support-table-of-contents ol.nested {
+    counter-reset: item
+}
+
+div.wp-block-a8c-support-table-of-contents ol.nested li {
+    display: block;
+    margin-left: -1em;
+}
+
+div.wp-block-a8c-support-table-of-contents ol.nested li:before {
+    content: counters(item, ".") ") ";
+    counter-increment: item;
+}
