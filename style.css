@@ -1,5 +1,6 @@
 div.wp-block-a8c-support-table-of-contents {
-	background-color: #f3f6f8;
+//	background-color: #f3f6f8;
+	background: red;
 }
 
 div.wp-block-a8c-support-table-of-contents ol, div.wp-block-a8c-support-table-of-contents li {

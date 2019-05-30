@@ -48,10 +48,9 @@ const TableOfContents = ( props ) => {
 };
 
 const save = ( { className, attributes = {} } ) => {
-	const { outline = [], bulletStyle, title } = attributes;
+	const { outline = [], bulletStyle } = attributes;
 	return (
 		<div className={ className } >
-			{ ! RichText.isEmpty( title ) && <RichText.Content tagName="h5" value={ title } /> }
 			<TableOfContents outline={ outline } bulletStyle={ bulletStyle } />
 		</div>
 	);
@@ -63,7 +62,6 @@ class editComponent extends Component {
 		this.computeOutline = this.computeOutline.bind( this );
 		this.updateOutline = this.updateOutline.bind( this );
 		this.onChangeBulletStyle = this.onChangeBulletStyle.bind( this );
-		this.onChangeTitle = this.onChangeTitle.bind( this );
 		this.updateOutline();
 	}
 	
@@ -134,24 +132,15 @@ class editComponent extends Component {
 		}
 	}
 
-	onChangeTitle( title ) {
-		this.props.setAttributes( { title } );
-	}
-
 	render() {
 		const { className } = this.props;
-		const { outline = [], bulletStyle, title } = this.props.attributes;
-		console.log( 'EDIT: ' + className );
+		const { outline = [], bulletStyle } = this.props.attributes;
+
 		return (
 			<div className={ className }>
 				<BlockControls>
 					<TableOfContentsToolbar selectedStyle={ bulletStyle } onChange={ this.onChangeBulletStyle } />
 				</BlockControls>
-				<RichText
-					tagName="h5"
-					value={ title }
-					onChange={ this.onChangeTitle }
-				/>
 				<TableOfContents outline={ outline } bulletStyle={ bulletStyle } />
 			</div>
 		);
@@ -172,10 +161,6 @@ registerBlockType( 'a8c/support-table-of-contents', {
 		bulletStyle: {
 			type: 'string',
 			default: 'none',
-		},
-		title: {
-			type: 'string',
-			default: __( 'Table of contents' ),
 		},
 	},
 	edit,
